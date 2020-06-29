@@ -1,7 +1,8 @@
-import { authUrl } from './auth';
-import { getUserUrl } from './user';
+import { AUTH_URL } from './auth';
+import { GET_USER_URL, USER_PLAYLIST_URL } from './user';
 
 export {
-  authUrl,
-  getUserUrl,
+  AUTH_URL,
+  GET_USER_URL,
+  USER_PLAYLIST_URL,
 };

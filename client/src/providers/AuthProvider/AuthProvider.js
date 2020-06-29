@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
-// import axios from 'axios';
+import axios from 'axios';
 
-import { authUrl } from 'config';
+import { AUTH_URL, GET_USER_URL } from 'config';
 
 const AuthProvider = ({ children, location, history }) => {
   const getParams = (hash) => {
@@ -30,6 +30,14 @@ const AuthProvider = ({ children, location, history }) => {
     return +expirationDate < currentDate;
   }
 
+  const getUserId = token => {
+    const request = GET_USER_URL(token);
+
+    axios.get(request)
+      .then(({ data }) => localStorage.setItem('userId', data.id))
+      .catch(err => console.error(err))
+  };
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     const { hash } = location || {};
@@ -40,6 +48,9 @@ const AuthProvider = ({ children, location, history }) => {
 
     // let authWindow;
     // let checkConnect;
+    if (token && !tokenExpired) {
+      getUserId(token);
+    }
 
     if (tokenExpired || (!token && !hash)) {
       // authWindow = window.open(authUrl, "auth", "width=400,height=400");
@@ -52,7 +63,7 @@ const AuthProvider = ({ children, location, history }) => {
       //   clearInterval(checkConnect);
       //   authWindow.close();
       // }, 100);
-      window.location.href = authUrl;
+      window.location.href = AUTH_URL;
     }
 
     if (hash) {

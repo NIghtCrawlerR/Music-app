@@ -13,7 +13,7 @@ const params = {
   permissions: 'perms=basic_access,email'
 }
 
-export const authUrl = `${deezerConnectUrl}/oauth/auth.php?
+export const AUTH_URL = `${deezerConnectUrl}/oauth/auth.php?
 ${params.appId}
 &${params.redirectUrl}
 &${params.permissions}
