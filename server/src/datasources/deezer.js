@@ -24,7 +24,8 @@ class DeezerAPI extends RESTDataSource {
   }
 
   async getUsersPlaylists({ userId }) {
-    const { data } = await this.get(`/user/${userId}/playlists`);
+    const response = await this.get(`/user/${userId}/playlists`);
+    const { data } = response;
 
     return Array.isArray(data)
       ? data.map(playlist => this.playlistReducer(playlist))

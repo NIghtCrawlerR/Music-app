@@ -2,7 +2,7 @@ const { gql } = require('apollo-server');
 
 const typeDefs = gql`
   type Query {
-    playlists(userId: Int!): [Playlist]!
+    playlists(userId: String!): [Playlist]!
   }
 
   type Playlist {

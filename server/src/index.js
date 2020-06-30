@@ -1,8 +1,14 @@
-const { ApolloServer } = require('apollo-server');
+const { ApolloServer } = require('apollo-server-express');
+const express = require('express');
+const bodyparser = require('body-parser');
+
 const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
 
 const DeezerAPI = require('./datasources/deezer');
+
+const app = express();
+app.use(bodyparser());
 
 const server = new ApolloServer({
   typeDefs,
@@ -12,6 +18,8 @@ const server = new ApolloServer({
   }),
 });
 
-server.listen().then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
-});
+server.applyMiddleware({ app });
+
+app.listen({ port: 4000 }, () =>
+  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+);
