@@ -5,8 +5,7 @@ const QUERY = gql`
     playlists(userId: $userId) {
       id
       title
-      link
-      picture
+      picture_medium
       is_loved_track
     }
   }

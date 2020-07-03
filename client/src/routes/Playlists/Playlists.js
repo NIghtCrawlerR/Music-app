@@ -1,37 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useQuery } from '@apollo/react-hooks';
+import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { USER_ID } from 'config';
-import QUERY from './graphql/PlaylistsQuery';
+import Playlist from './routes/Playlist';
+import PlaylistsList from './routes/PlaylistsList';
 
-const Playlists = () => {
-  const [playlists, setPlaylists] = useState([]);
-
-  console.log(typeof USER_ID);
-  const playlistsQuery = useQuery(QUERY, {
-    variables: {
-      userId: USER_ID,
-    },
-  });
- 
-  // useEffect(() => {
-  //   const request = {
-  //     url: USER_PLAYLIST_URL,
-  //     method: 'get',
-  //   };
-
-  //   axios(request)
-  //     .then(({ data }) => setPlaylists(data))
-  //     .catch(err => console.error(err));
-  // }, []);
-  console.log(playlistsQuery);
-
-  return (
-    <div>
-      Playlists
-    </div>
-  );
-}
+const Playlists = () => (
+  <Switch>
+    <Route path="/playlists" component={PlaylistsList} exact />
+    <Route path="/playlists/:id" component={Playlist} exact />
+    <Redirect to="/playlists" />
+  </Switch>
+);
 
 export default Playlists;

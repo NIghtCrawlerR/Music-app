@@ -2,8 +2,7 @@ const { ApolloServer } = require('apollo-server-express');
 const express = require('express');
 const bodyparser = require('body-parser');
 
-const typeDefs = require('./schema');
-const resolvers = require('./resolvers');
+const schema = require('./graphql/schema');
 
 const DeezerAPI = require('./datasources/deezer');
 
@@ -11,8 +10,7 @@ const app = express();
 app.use(bodyparser());
 
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+  schema: schema,
   dataSources: () => ({
     deezerAPI: new DeezerAPI,
   }),

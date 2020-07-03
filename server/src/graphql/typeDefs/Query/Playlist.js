@@ -1,15 +1,15 @@
-const { gql } = require('apollo-server');
+const { gql } = require('apollo-server-express');
 
-const typeDefs = gql`
-  type Query {
+const PlaylistType = gql`
+  extend type Query {
     playlists(userId: String!): [Playlist]!
-  }
+  } 
 
   type Playlist {
     id: ID!
     title: String!
     description: String!
-    duration: Float!
+    duration: Int!
     is_loved_track: Boolean!
     public: Boolean!
     link: String!
@@ -21,4 +21,4 @@ const typeDefs = gql`
   }
 `;
 
-module.exports = typeDefs;
+module.exports = PlaylistType;
