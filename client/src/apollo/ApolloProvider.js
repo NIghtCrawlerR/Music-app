@@ -1,8 +1,9 @@
 import React from 'react';
-import { ApolloClient } from "apollo-client";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { HttpLink } from "apollo-link-http";
-import { ApolloProvider as OriginalProvider } from "@apollo/react-hooks";
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
+import { ApolloProvider as OriginalProvider } from '@apollo/react-hooks';
+import PropTypes from 'prop-types';
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
@@ -11,7 +12,7 @@ const link = new HttpLink({
 
 const client = new ApolloClient({
   cache,
-  link
+  link,
 });
 
 const ApolloProvider = ({ children }) => (
@@ -19,5 +20,9 @@ const ApolloProvider = ({ children }) => (
     {children}
   </OriginalProvider>
 );
+
+ApolloProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default ApolloProvider;

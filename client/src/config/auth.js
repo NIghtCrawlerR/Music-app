@@ -10,8 +10,8 @@ const params = {
   appId: `app_id=${appId}`,
   secret: `secret=${appSecret}`,
   redirectUrl: `redirect_uri=${redirectUrl}`,
-  permissions: 'perms=basic_access,email'
-}
+  permissions: 'perms=basic_access,email',
+};
 
 export const AUTH_URL = `${deezerConnectUrl}/oauth/auth.php?
 ${params.appId}

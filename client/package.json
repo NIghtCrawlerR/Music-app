@@ -14,18 +14,22 @@
     "graphql": "^15.2.0",
     "graphql-tag": "^2.10.3",
     "lodash": "^4.17.15",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-apollo": "^3.1.5",
     "react-dom": "^16.13.1",
     "react-oauth-popup": "^0.1.1",
     "react-router-dom": "^5.2.0",
+    "react-router-prop-types": "^1.0.4",
     "react-scripts": "3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.js",
+    "lint:fix": "eslint --fix src/**/*.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -41,5 +45,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-react": "^7.20.3"
   }
 }

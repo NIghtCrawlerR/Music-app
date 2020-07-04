@@ -22,6 +22,6 @@ const PlaylistsList = () => {
       ))}
     </div>
   );
-}
+};
 
 export default PlaylistsList;

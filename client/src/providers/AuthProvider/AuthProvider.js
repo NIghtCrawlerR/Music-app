@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
+import PropTypes from 'prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 import { AUTH_URL, GET_USER_URL } from 'config';
 
@@ -13,7 +15,7 @@ const AuthProvider = ({ children, location, history }) => {
     const expires = hash.match(expiresRegExp)[1];
 
     return { token, expires };
-  }
+  };
 
   const isTokenExpired = () => {
     const expirationDate = localStorage.getItem('expirationDate');
@@ -24,18 +26,17 @@ const AuthProvider = ({ children, location, history }) => {
     console.log({
       expirationDate: new Date(+expirationDate),
       currentDate: new Date(currentDate),
-    })
-
+    });
 
     return +expirationDate < currentDate;
-  }
+  };
 
-  const getUserId = token => {
+  const getUserId = (token) => {
     const request = GET_USER_URL(token);
 
     axios.get(request)
       .then(({ data }) => localStorage.setItem('userId', data.id))
-      .catch(err => console.error(err))
+      .catch((err) => console.error(err));
   };
 
   useEffect(() => {
@@ -44,7 +45,7 @@ const AuthProvider = ({ children, location, history }) => {
 
     const tokenExpired = isTokenExpired();
 
-    console.log({ tokenExpired })
+    console.log({ tokenExpired });
 
     // let authWindow;
     // let checkConnect;
@@ -82,6 +83,12 @@ const AuthProvider = ({ children, location, history }) => {
       {children}
     </>
   );
+};
+
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
 };
 
 export default withRouter(AuthProvider);
