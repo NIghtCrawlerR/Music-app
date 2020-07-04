@@ -1,21 +1,19 @@
 import React from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import Home from 'routes/Home';
-import Playlists from 'routes/Playlists';
+import Playlist from 'routes/Playlist';
+import Profile from 'routes/Profile';
+import Layout from '../Layout';
 
 const Root = () => (
-  <div>
-    Root
-
-    <p><Link to="/home">Home</Link></p>
-    <p><Link to="/playlists">Playlists</Link></p>
-
+  <Layout>
     <Switch>
       <Route path="/home" component={Home} />
-      <Route path="/playlists" component={Playlists} />
+      <Route path="/playlist" component={Playlist} />
+      <Route path="/profile" component={Profile} />
     </Switch>
-  </div>
+  </Layout>
 );
 
 export default Root;

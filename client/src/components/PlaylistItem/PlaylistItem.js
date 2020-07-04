@@ -11,7 +11,7 @@ const PlaylistItem = ({
 }) => (
   <div>
     <img src={pictureMedium} alt="" />
-    <Link to={`playlists/${id}`}>
+    <Link to={`/playlist/${id}`}>
       <h3>{title}</h3>
     </Link>
   </div>
