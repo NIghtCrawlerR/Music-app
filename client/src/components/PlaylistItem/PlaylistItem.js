@@ -5,11 +5,11 @@ const PlaylistItem = ({
   playlist: {
     id,
     title,
-    picture_medium,
+    pictureMedium,
   },
 }) => (
     <div>
-      <img src={picture_medium} />
+      <img src={pictureMedium} />
       <Link to={`playlists/${id}`}>
         <h3>{title}</h3>
       </Link>

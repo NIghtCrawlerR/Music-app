@@ -3,6 +3,7 @@ const { gql } = require('apollo-server-express');
 const PlaylistType = gql`
   extend type Query {
     playlists(userId: String!): [Playlist]!
+    playlistTracks(playlistId: String!): [Track]!
   } 
 
   type Playlist {
@@ -10,14 +11,19 @@ const PlaylistType = gql`
     title: String!
     description: String!
     duration: Int!
-    is_loved_track: Boolean!
+    isLovedTrack: Boolean!
     public: Boolean!
     link: String!
     picture: String!
-    picture_medium: String!
+    pictureMedium: String!
     rating: Float
-    nb_tracks: Int
+    tracksCount: Int
     share: String
+  }
+
+  type Track {
+    id: ID!
+    title: String!
   }
 `;
 

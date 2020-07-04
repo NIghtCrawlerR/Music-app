@@ -8,27 +8,32 @@ class DeezerAPI extends RESTDataSource {
 
   playlistReducer(playlist) {
     return {
-      id: playlist.id,
-      title: playlist.title,
-      is_loved_track: playlist.is_loved_track,
-      link: playlist.link,
-      picture_medium: playlist.picture_medium,
-      description: playlist.description,
-      duration: playlist.duration,
-      public: playlist.public,
-      picture: playlist.picture,
-      rating: playlist.rating,
-      nb_tracks: playlist.nb_tracks,
-      share: playlist.share,
+      isLovedTrack: playlist.is_loved_track,
+      pictureMedium: playlist.picture_medium,
+      tracksCount: playlist.nb_tracks,
+      ...playlist,
+    }
+  }
+
+  trackReducer(track) {
+    return {
+      ...track,
     }
   }
 
   async getUsersPlaylists({ userId }) {
-    const response = await this.get(`/user/${userId}/playlists`);
-    const { data } = response;
+    const { data } = await this.get(`/user/${userId}/playlists`);
 
     return Array.isArray(data)
       ? data.map(playlist => this.playlistReducer(playlist))
+      : [];
+  }
+
+  async getPlaylistTracks({ playlistId }) {
+    const { data } = await this.get(`/playlist/${playlistId}/tracks`);
+
+    return Array.isArray(data)
+      ? data.map(track => this.trackReducer(track))
       : [];
   }
 }
