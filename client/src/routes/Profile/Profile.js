@@ -8,11 +8,11 @@ import Playlists from './routes/Playlists';
 
 const Profile = () => (
   <Switch>
-    <Route path="/profile/playlists" component={Playlists} />
-    <Route path="/profile/artists" component={Artists} />
-    <Route path="/profile/albums" component={Albums} />
-    <Route path="/profile" component={Overview} />
-    <Redirect to="/profile" />
+    <Route path="/profile/:userId/playlists" component={Playlists} />
+    <Route path="/profile/:userId/artists" component={Artists} />
+    <Route path="/profile/:userId/albums" component={Albums} />
+    <Route path="/profile/:userId" component={Overview} />
+    <Redirect to="/profile/:userId" />
   </Switch>
 );
 

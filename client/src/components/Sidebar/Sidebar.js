@@ -11,7 +11,7 @@ import {
 
 const renderList = (links, isChildLink = false) => links.map((link) => (
   <ListItem key={link.url} className="SidebarListItem">
-    <Link to={link.url} capitalize={isChildLink}>{link.title}</Link>
+    <Link to={link.url} capitalize={isChildLink ? 1 : 0}>{link.title}</Link>
     {link.children && (
       <ListItemChildren>
         {renderList(link.children, true)}

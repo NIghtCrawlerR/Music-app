@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
-import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
 
+import PropTypes from 'utils/propTypes';
 import { AUTH_URL, GET_USER_URL } from 'config';
 
 const AuthProvider = ({ children, location, history }) => {
@@ -87,8 +86,8 @@ const AuthProvider = ({ children, location, history }) => {
 
 AuthProvider.propTypes = {
   children: PropTypes.node.isRequired,
-  history: ReactRouterPropTypes.history.isRequired,
-  location: ReactRouterPropTypes.location.isRequired,
+  history: PropTypes.history.isRequired,
+  location: PropTypes.location.isRequired,
 };
 
 export default withRouter(AuthProvider);
