@@ -20,11 +20,6 @@ const PlaylistType = gql`
     tracksCount: Int
     share: String
   }
-
-  type Track {
-    id: ID!
-    title: String!
-  }
 `;
 
 module.exports = PlaylistType;

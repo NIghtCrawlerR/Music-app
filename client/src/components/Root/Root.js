@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from 'routes/Home';
 import Playlist from 'routes/Playlist';
 import Artist from 'routes/Artist';
+import Album from 'routes/Album';
 import Profile from 'routes/Profile';
 import Layout from '../Layout';
 
@@ -14,6 +15,7 @@ const Root = () => (
       <Route path="/playlist" component={Playlist} />
       <Route path="/profile" component={Profile} />
       <Route path="/artist/:artistId" component={Artist} />
+      <Route path="/album/:albumId" component={Album} />
     </Switch>
   </Layout>
 );

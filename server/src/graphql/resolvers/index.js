@@ -11,5 +11,11 @@ module.exports = {
 
     artist: (_, args, { dataSources }) =>
       dataSources.deezerAPI.getArtist(args),
+
+    albums: (_, args, { dataSources }) =>
+      dataSources.deezerAPI.getUsersAlbums(args),
+
+    albumTracks: (_, args, { dataSources }) =>
+      dataSources.deezerAPI.getAlbumTracks(args),
   }
 };
