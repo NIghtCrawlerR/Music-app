@@ -1,15 +1,11 @@
+const { trackReducer } = require('./reducers');
+
 const playlistReducer = (playlist) => {
   return {
     isLovedTrack: playlist.is_loved_track,
     pictureMedium: playlist.picture_medium,
     tracksCount: playlist.nb_tracks,
     ...playlist,
-  }
-}
-
-const trackReducer = (track) => {
-  return {
-    ...track,
   }
 }
 

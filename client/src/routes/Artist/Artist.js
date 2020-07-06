@@ -31,9 +31,9 @@ const Artist = ({ match: { params: { artistId } } }) => {
       <Link to={`/artist/${artistId}/albums`}>Albums</Link>
 
       <Switch>
-        <Route path="/artist/:artistId" />
-        <Route path="/artist/:artistId/top_tracks" component={TopTracks} />
-        <Route path="/artist/:artistId/albums" component={Albums} />
+        <Route path="/artist/:artistId" exact />
+        <Route path="/artist/:artistId/top_tracks" component={TopTracks} exact />
+        <Route path="/artist/:artistId/albums" component={Albums} exact />
         <Redirect to="/artist/:artistId" />
       </Switch>
     </>

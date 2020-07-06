@@ -4,6 +4,8 @@ const ArtistType = gql`
   extend type Query {
     artists(userId: String!): [Artist]!
     artist(artistId: String!): Artist!
+    artistTopTracks(artistId: String!): [Track]!
+    artistAlbums(artistId: String!): [Album]!
   }
 
   type Artist {

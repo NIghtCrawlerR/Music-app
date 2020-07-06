@@ -1,7 +1,7 @@
 const { RESTDataSource } = require('apollo-datasource-rest');
 
 const { GET_USERS_PLAYLIST, GET_PLAYLIST_TRACKS } = require('./playlist');
-const { GET_USER_ARTISTS, GET_ARTIST } = require('./artist');
+const { GET_USER_ARTISTS, GET_ARTIST, GET_TOP_TRACKS, GET_ARTIST_ALBUMS } = require('./artist');
 const { GET_USER_ALBUMS, GET_ALBUM_TRACKS } = require('./album');
 
 class DeezerAPI extends RESTDataSource {
@@ -24,6 +24,14 @@ class DeezerAPI extends RESTDataSource {
 
   async getArtist(args) {
     return await GET_ARTIST(args, this);
+  }
+
+  async getArtistTopTracks(args) {
+    return await GET_TOP_TRACKS(args, this);
+  }
+
+  async getArtistAlbums(args) {
+    return await GET_ARTIST_ALBUMS(args, this);
   }
 
   async getUsersAlbums(args) {

@@ -1,15 +1,4 @@
-const albumReducer = (album) => {
-  return {
-    coverMedium: album.cover_medium,
-    ...album,
-  }
-}
-
-const trackReducer = (track) => {
-  return {
-    ...track,
-  }
-}
+const { trackReducer, albumReducer } = require('./reducers');
 
 const GET_USER_ALBUMS = async ({ userId }, context) => {
   const { data } = await context.get(`/user/${userId}/albums`);
