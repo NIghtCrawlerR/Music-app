@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import get from 'lodash/get';
 
 import { USER_ID } from 'config';
-import PlaylistItem from 'components/PlaylistItem';
+import PlayList from 'components/PlayList';
 import QUERY from './graphql/PlaylistsQuery';
 
 const Playlists = () => {
@@ -15,13 +15,7 @@ const Playlists = () => {
 
   const playlists = get(playlistsQuery, 'data.playlists', []);
 
-  return (
-    <div>
-      {playlists.map((playlist) => (
-        <PlaylistItem key={playlist.id} playlist={playlist} />
-      ))}
-    </div>
-  );
+  return (<PlayList playlists={playlists} />);
 };
 
 export default Playlists;

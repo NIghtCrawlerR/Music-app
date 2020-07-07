@@ -2,27 +2,27 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const PlaylistItem = ({
-  playlist: {
+const ArtistItem = ({
+  artist: {
     id,
-    title,
+    name,
     pictureMedium,
   },
 }) => (
   <div>
     <img src={pictureMedium} alt="" />
-    <Link to={`/playlist/${id}`}>
-      <h3>{title}</h3>
+    <Link to={`/artist/${id}`}>
+      <h3>{name}</h3>
     </Link>
   </div>
 );
 
-PlaylistItem.propTypes = {
-  playlist: PropTypes.shape({
+ArtistItem.propTypes = {
+  artist: PropTypes.shape({
     id: PropTypes.string,
-    title: PropTypes.string,
+    name: PropTypes.string,
     pictureMedium: PropTypes.string,
   }).isRequired,
 };
 
-export default PlaylistItem;
+export default ArtistItem;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const Album = ({
+const AlbumItem = ({
   album: {
     id,
     title,
@@ -17,7 +17,7 @@ const Album = ({
   </div>
 );
 
-Album.propTypes = {
+AlbumItem.propTypes = {
   album: PropTypes.shape({
     id: PropTypes.string,
     title: PropTypes.string,
@@ -25,4 +25,4 @@ Album.propTypes = {
   }).isRequired,
 };
 
-export default Album;
+export default AlbumItem;

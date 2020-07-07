@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import get from 'lodash/get';
 
 import PropTypes from 'utils/propTypes';
-import Artist from 'components/Artist';
+import ArtistsList from 'components/ArtistsList';
 import QUERY from './graphql/ArtistsQuery';
 
 const Artists = ({ match: { params: { userId } } }) => {
@@ -14,15 +14,8 @@ const Artists = ({ match: { params: { userId } } }) => {
   });
 
   const artists = get(artistsQuery, 'data.artists', []);
-  console.log(artists);
 
-  return (
-    <div>
-      {artists.map((artist) => (
-        <Artist key={artist.id} artist={artist} />
-      ))}
-    </div>
-  );
+  return (<ArtistsList artists={artists} />);
 };
 
 Artists.propTypes = {
