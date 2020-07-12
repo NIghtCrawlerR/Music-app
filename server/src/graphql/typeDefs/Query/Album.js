@@ -10,6 +10,7 @@ const AlbumType = gql`
     id: ID!
     title: String!
     coverMedium: String!
+    artist: Artist!
   }
 `;
 

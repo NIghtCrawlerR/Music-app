@@ -2,28 +2,38 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { ListItem } from 'styledComponents';
+import { ListItem, Heading4, Heading4Sub, CoverWrap } from 'styledComponents';
 
 const AlbumItem = ({
   album: {
     id,
     title,
     coverMedium,
+    artist: { id: artistId, name: artistName },
   },
 }) => (
   <ListItem className="AlbumItem">
-    <img src={coverMedium} alt="" />
-    <Link to={`/album/${id}`}>
-      <h3>{title}</h3>
-    </Link>
+    <CoverWrap to={`/album/${id}`}>
+      <img src={coverMedium} alt="" />
+    </CoverWrap>
+    <Heading4>
+      <Link to={`/album/${id}`}>{title}</Link>
+    </Heading4>
+    <Heading4Sub>
+      <Link to={`/artist/${artistId}`}>{artistName}</Link>
+    </Heading4Sub>
   </ListItem>
 );
 
 AlbumItem.propTypes = {
   album: PropTypes.shape({
-    id: PropTypes.string,
-    title: PropTypes.string,
-    coverMedium: PropTypes.string,
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    coverMedium: PropTypes.string.isRequired,
+    artist: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
 };
 

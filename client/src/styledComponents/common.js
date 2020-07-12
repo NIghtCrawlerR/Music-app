@@ -7,6 +7,7 @@ export const CoverWrap = styled(Link)`
   width: 264px;
   height: 264px;
   border-radius: 4px;
+  box-shadow: 0 1px 6px rgba(25,25,34,.16);
   overflow: hidden;
 
   img {
@@ -22,6 +23,22 @@ export const List = styled.div`
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
   width: 100%;
+
+  @media screen and (max-width: 1440px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media screen and (max-width: 1280px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (max-width: 990px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 560px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const ListItem = styled.div`

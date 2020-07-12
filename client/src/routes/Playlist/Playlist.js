@@ -1,13 +1,29 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { useQuery } from '@apollo/react-hooks';
+import get from 'lodash/get';
+import PropTypes from 'prop-types';
 
-import Playlist from './routes/Playlist';
+import TrackList from 'components/TrackList';
+import QUERY from './graphql/PlaylistTracksQuery';
 
-const Playlists = () => (
-  <Switch>
-    <Route path="/playlist/:playlistId" component={Playlist} exact />
-    <Redirect to="/playlist" />
-  </Switch>
-);
+const Playlist = ({ match: { params: { playlistId } } }) => {
+  const playlistTracksQuery = useQuery(QUERY, {
+    variables: {
+      playlistId,
+    },
+  });
 
-export default Playlists;
+  const tracks = get(playlistTracksQuery, 'data.playlistTracks', []);
+
+  return (<TrackList tracks={tracks} />);
+};
+
+Playlist.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      playlistId: PropTypes.string,
+    }),
+  }).isRequired,
+};
+
+export default Playlist;

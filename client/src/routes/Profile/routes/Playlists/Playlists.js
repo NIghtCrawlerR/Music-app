@@ -15,7 +15,8 @@ const Playlists = () => {
     },
   });
 
-  const playlists = get(playlistsQuery, 'data.playlists', []);
+  const allPlaylists = get(playlistsQuery, 'data.playlists', []);
+  const playlists = allPlaylists.filter(({ isLovedTrack }) => !isLovedTrack);
 
   return (
     <>

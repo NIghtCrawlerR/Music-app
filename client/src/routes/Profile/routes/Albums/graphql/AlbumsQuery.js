@@ -6,6 +6,10 @@ const QUERY = gql`
       id
       title
       coverMedium
+      artist {
+        id
+        name
+      }
     }
   }
 `;
