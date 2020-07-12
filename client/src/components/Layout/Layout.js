@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 
 import Sidebar from '../Sidebar';
 
-import LayoutWrap from './styles';
+import { Layout as LayoutWrap, MainContainer } from './styles';
 
 const Layout = ({ children }) => (
-  <LayoutWrap>
+  <LayoutWrap className="Layout">
     <Sidebar />
-    {children}
+    <MainContainer className="MainContainer">
+      {children}
+    </MainContainer>
   </LayoutWrap>
 );
 

@@ -5,6 +5,8 @@ import ApolloProvider from 'apollo';
 import AuthProvider from 'providers/AuthProvider';
 import Root from 'components/Root';
 
+import './App.css';
+
 function App() {
   return (
     <BrowserRouter>

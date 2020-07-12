@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { List } from 'styledComponents';
 import ArtistItem from './ArtistItem';
 
 const ArtistsList = ({ artists }) => (
-  <div>
+  <List className="ArtistsList">
     {artists.map((artist) => (
       <ArtistItem key={artist.id} artist={artist} />
     ))}
-  </div>
+  </List>
 );
 
 ArtistsList.propTypes = {

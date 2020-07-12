@@ -6,6 +6,9 @@ module.exports = {
     playlistTracks: (_, args, { dataSources }) =>
       dataSources.deezerAPI.getPlaylistTracks(args),
 
+    loved: (_, args, { dataSources }) =>
+      dataSources.deezerAPI.getLovedTracks(args),
+
     artists: (_, args, { dataSources }) =>
       dataSources.deezerAPI.getUsersArtists(args),
 

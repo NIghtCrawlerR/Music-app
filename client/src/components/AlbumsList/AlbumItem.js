@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import { ListItem } from 'styledComponents';
+
 const AlbumItem = ({
   album: {
     id,
@@ -9,12 +11,12 @@ const AlbumItem = ({
     coverMedium,
   },
 }) => (
-  <div>
+  <ListItem className="AlbumItem">
     <img src={coverMedium} alt="" />
     <Link to={`/album/${id}`}>
       <h3>{title}</h3>
     </Link>
-  </div>
+  </ListItem>
 );
 
 AlbumItem.propTypes = {

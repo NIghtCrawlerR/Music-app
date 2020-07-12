@@ -4,6 +4,7 @@ const PlaylistType = gql`
   extend type Query {
     playlists(userId: String!): [Playlist]!
     playlistTracks(playlistId: String!): [Track]!
+    loved(userId: String!): LovedTracks!
   } 
 
   type Playlist {
@@ -19,6 +20,11 @@ const PlaylistType = gql`
     rating: Float
     tracksCount: Int
     share: String
+  }
+
+  type LovedTracks {
+    data: [Track]!
+    count: Int
   }
 `;
 

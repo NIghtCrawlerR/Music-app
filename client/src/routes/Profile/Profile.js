@@ -5,9 +5,11 @@ import Overview from './routes/Overview';
 import Albums from './routes/Albums';
 import Artists from './routes/Artists';
 import Playlists from './routes/Playlists';
+import LovedTracks from './routes/LovedTracks';
 
 const Profile = () => (
   <Switch>
+    <Route path="/profile/:userId/loved" component={LovedTracks} />
     <Route path="/profile/:userId/playlists" component={Playlists} />
     <Route path="/profile/:userId/artists" component={Artists} />
     <Route path="/profile/:userId/albums" component={Albums} />

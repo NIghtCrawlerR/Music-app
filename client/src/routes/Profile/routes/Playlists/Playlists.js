@@ -6,6 +6,8 @@ import { USER_ID } from 'config';
 import PlayList from 'components/PlayList';
 import QUERY from './graphql/PlaylistsQuery';
 
+import { Heading1 } from 'styledComponents';
+
 const Playlists = () => {
   const playlistsQuery = useQuery(QUERY, {
     variables: {
@@ -15,7 +17,12 @@ const Playlists = () => {
 
   const playlists = get(playlistsQuery, 'data.playlists', []);
 
-  return (<PlayList playlists={playlists} />);
+  return (
+    <>
+      <Heading1>{`${playlists.length} playlists`}</Heading1>
+      <PlayList playlists={playlists} />
+    </>
+  );
 };
 
 export default Playlists;
