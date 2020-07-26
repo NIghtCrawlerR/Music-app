@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { ListItem } from 'styledComponents';
+import { Heading4 } from 'styledComponents';
+import { ArtistCover, ArtistWrap } from './style';
 
 const ArtistItem = ({
   artist: {
@@ -11,12 +12,14 @@ const ArtistItem = ({
     pictureMedium,
   },
 }) => (
-  <ListItem className="ArtistItem">
-    <img src={pictureMedium} alt="" />
-    <Link to={`/artist/${id}`}>
-      <h3>{name}</h3>
-    </Link>
-  </ListItem>
+  <ArtistWrap className="ArtistItem">
+    <ArtistCover to={`/artist/${id}`}>
+      <img src={pictureMedium} alt="" />
+    </ArtistCover>
+    <Heading4>
+      <Link to={`/artist/${id}`}>{name}</Link>
+    </Heading4>
+  </ArtistWrap>
 );
 
 ArtistItem.propTypes = {

@@ -22,6 +22,7 @@ const AuthProvider = ({ children, location, history }) => {
 
     if (!expirationDate) return true;
 
+    // eslint-disable-next-line no-console
     console.log({
       expirationDate: new Date(+expirationDate),
       currentDate: new Date(currentDate),
@@ -35,6 +36,7 @@ const AuthProvider = ({ children, location, history }) => {
 
     axios.get(request)
       .then(({ data }) => localStorage.setItem('userId', data.id))
+      // eslint-disable-next-line no-console
       .catch((err) => console.error(err));
   };
 
@@ -44,6 +46,7 @@ const AuthProvider = ({ children, location, history }) => {
 
     const tokenExpired = isTokenExpired();
 
+    // eslint-disable-next-line no-console
     console.log({ tokenExpired });
 
     // let authWindow;

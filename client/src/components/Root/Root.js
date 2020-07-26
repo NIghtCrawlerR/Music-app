@@ -13,7 +13,7 @@ const Root = () => (
     <Switch>
       <Route path="/home" component={Home} />
       <Route path="/playlist/:playlistId" component={Playlist} />
-      <Route path="/profile" component={Profile} />
+      <Route path="/profile/:userId" component={Profile} />
       <Route path="/artist/:artistId" component={Artist} />
       <Route path="/album/:albumId" component={Album} />
     </Switch>

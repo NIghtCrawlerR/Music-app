@@ -8,6 +8,13 @@ const GET_USER_ALBUMS = async ({ userId }, context) => {
     : [];
 }
 
+const GET_ALBUM = async ({ albumId }, context) => {
+  const response = await context.get(`/album/${albumId}`);
+
+  console.log(response);
+  return response ? albumReducer(response) : {};
+}
+
 const GET_ALBUM_TRACKS = async ({ albumId }, context) => {
   const { data } = await context.get(`/album/${albumId}/tracks`);
 
@@ -18,5 +25,6 @@ const GET_ALBUM_TRACKS = async ({ albumId }, context) => {
 
 module.exports = {
   GET_USER_ALBUMS,
+  GET_ALBUM,
   GET_ALBUM_TRACKS,
 };

@@ -4,19 +4,32 @@ import get from 'lodash/get';
 
 import PropTypes from 'utils/propTypes';
 import TrackList from 'components/TrackList';
-import QUERY from './graphql/AlbumTracksQuery';
+import TRACKS_QUERY from './graphql/AlbumTracksQuery';
+import ALBUM_QUERY from './graphql/AlbumQuery';
 
 const Album = ({ match: { params: { albumId } } }) => {
-  const albumTracksQuery = useQuery(QUERY, {
+  const albumTracksQuery = useQuery(TRACKS_QUERY, {
     variables: {
       albumId,
     },
   });
 
+  const albumQuery = useQuery(ALBUM_QUERY, {
+    variables: {
+      albumId,
+    },
+  });
+
+  const album = get(albumQuery, 'data.album', {});
   const tracks = get(albumTracksQuery, 'data.albumTracks', []);
 
   return (
-    <TrackList tracks={tracks} />
+    <>
+      <h3>{album.title}</h3>
+      <img src={album.coverMedium} alt="" />
+
+      <TrackList tracks={tracks} showArtist={false} showAlbum={false} />
+    </>
   );
 };
 

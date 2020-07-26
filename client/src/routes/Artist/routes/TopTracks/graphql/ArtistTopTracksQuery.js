@@ -5,6 +5,14 @@ const QUERY = gql`
     artistTopTracks(artistId: $artistId) {
       id
       title
+      artist {
+        id
+        name
+      }
+      album {
+        id
+        title
+      }
     }
   }
 `;

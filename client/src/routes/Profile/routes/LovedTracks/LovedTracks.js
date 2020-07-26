@@ -4,9 +4,8 @@ import get from 'lodash/get';
 
 import PropTypes from 'utils/propTypes';
 import TrackList from 'components/TrackList';
-import QUERY from './graphql/LovedTracksQuery';
-
 import { Heading1 } from 'styledComponents';
+import QUERY from './graphql/LovedTracksQuery';
 
 const LovedTracks = ({ match: { params: { userId } } }) => {
   const lovedTracksQuery = useQuery(QUERY, {

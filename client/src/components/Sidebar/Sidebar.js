@@ -4,27 +4,35 @@ import NAVIGATION from './config';
 import {
   SidebarWrap,
   List,
-  ListItem,
   Link,
-  ListItemChildren,
+  LinkChild,
 } from './styles';
 
-const renderList = (links, isChildLink = false) => links.map((link) => (
-  <ListItem key={link.url} className="SidebarListItem">
-    <Link to={link.url} capitalize={isChildLink ? 1 : 0}>{link.title}</Link>
-    {link.children && (
-      <ListItemChildren>
-        {renderList(link.children, true)}
-      </ListItemChildren>
+const renderChildren = (children) => children.map(({ url, title }) => (
+  <LinkChild
+    to={url}
+    key={url}
+    activeClassName="active"
+  >
+    {title}
+  </LinkChild>
+));
+
+const renderList = (links) => links.map(({ url, title, children }) => (
+  <List key={url} className="SidebarList">
+    <Link to={url} activeClassName="active">{title}</Link>
+
+    {children && (
+      <List className="SidebarListChildren">
+        {renderChildren(children)}
+      </List>
     )}
-  </ListItem>
+  </List>
 ));
 
 const Sidebar = () => (
   <SidebarWrap className="Sidebar">
-    <List className="SidebarList">
-      {renderList(NAVIGATION)}
-    </List>
+    {renderList(NAVIGATION)}
   </SidebarWrap>
 );
 

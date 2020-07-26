@@ -5,6 +5,8 @@
     },
     "extends": [
         "eslint:recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
         "plugin:react/recommended",
         "airbnb"
     ],
@@ -25,6 +27,7 @@
     "settings": {
         "import/resolver": {
             "node": {
+                "moduleDirectory": ["node_modules", "src/"],
                 "paths": ["src"],
                 "extensions": [".js", ".jsx"]
             }

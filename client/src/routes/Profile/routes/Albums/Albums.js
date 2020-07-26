@@ -4,9 +4,8 @@ import get from 'lodash/get';
 
 import PropTypes from 'utils/propTypes';
 import AlbumsList from 'components/AlbumsList';
-import QUERY from './graphql/AlbumsQuery';
-
 import { Heading1 } from 'styledComponents';
+import QUERY from './graphql/AlbumsQuery';
 
 const Albums = ({ match: { params: { userId } } }) => {
   const albumsQuery = useQuery(QUERY, {

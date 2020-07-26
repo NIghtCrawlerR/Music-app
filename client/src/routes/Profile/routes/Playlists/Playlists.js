@@ -4,9 +4,8 @@ import get from 'lodash/get';
 
 import { USER_ID } from 'config';
 import PlayList from 'components/PlayList';
-import QUERY from './graphql/PlaylistsQuery';
-
 import { Heading1 } from 'styledComponents';
+import QUERY from './graphql/PlaylistsQuery';
 
 const Playlists = () => {
   const playlistsQuery = useQuery(QUERY, {

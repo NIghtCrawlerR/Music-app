@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Link,
   Switch,
   Route,
   Redirect,
@@ -9,6 +8,8 @@ import { useQuery } from '@apollo/react-hooks';
 import get from 'lodash/get';
 
 import PropTypes from 'utils/propTypes';
+import InlineNavigation from 'components/InlineNavigation';
+import navigationItems from './config';
 import TopTracks from './routes/TopTracks';
 import Albums from './routes/Albums';
 import QUERY from './graphql/ArtistQuery';
@@ -27,8 +28,7 @@ const Artist = ({ match: { params: { artistId } } }) => {
     <>
       <h3>{name}</h3>
       <img src={pictureMedium} alt="" />
-      <Link to={`/artist/${artistId}/top_tracks`}>Top tracks</Link>
-      <Link to={`/artist/${artistId}/albums`}>Albums</Link>
+      <InlineNavigation navigation={navigationItems({ path: `/artist/${artistId}` })} />
 
       <Switch>
         <Route path="/artist/:artistId" exact />

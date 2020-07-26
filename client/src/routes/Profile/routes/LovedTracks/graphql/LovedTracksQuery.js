@@ -7,6 +7,14 @@ const QUERY = gql`
       data {
         id
         title
+        artist {
+          id
+          name
+        }
+        album {
+          id
+          title
+        }
       }
     }
   }
