@@ -1,7 +1,8 @@
 const { trackReducer, albumReducer } = require('./reducers');
 
-const GET_USER_ALBUMS = async ({ userId }, context) => {
-  const { data } = await context.get(`/user/${userId}/albums`);
+const GET_USER_ALBUMS = async ({ userId, limit }, context) => {
+  const limitParam = limit ? `?limit=${limit}` : '';
+  const { data } = await context.get(`/user/${userId}/albums${limitParam}`);
 
   return Array.isArray(data)
     ? data.map(album => albumReducer(album))

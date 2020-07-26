@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { CoverWrap, ListItem, Heading4 } from 'styledComponents';
 
 const PlayListItem = ({
+  playlist,
   playlist: {
     id,
     title,
@@ -12,6 +13,7 @@ const PlayListItem = ({
   },
 }) => (
   <ListItem className="PlayListItem">
+    {/* {console.log(playlist)} */}
     <CoverWrap to={`/playlist/${id}`}>
       <img src={pictureMedium} alt="" />
     </CoverWrap>

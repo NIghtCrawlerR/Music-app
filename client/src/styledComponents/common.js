@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 
 export const CoverWrap = styled(Link)`
   display: block;
-  width: 264px;
-  height: 264px;
+  width: 100%;
+  height: 100%;
+  max-width: 264px;
+  max-height: 264px;
   border-radius: 4px;
   box-shadow: 0 1px 6px rgba(25,25,34,.16);
   overflow: hidden;

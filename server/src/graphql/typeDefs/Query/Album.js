@@ -2,7 +2,7 @@ const { gql } = require('apollo-server-express');
 
 const AlbumType = gql`
   extend type Query {
-    albums(userId: String!): [Album]!
+    albums(userId: String!, limit: Int): [Album]!
     album(albumId: String!): Album!
     albumTracks(albumId: String!): [Track]!
   }

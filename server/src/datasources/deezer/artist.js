@@ -8,8 +8,9 @@ const artistReducer = (artist) => {
   }
 }
 
-const GET_USER_ARTISTS = async ({ userId }, context) => {
-  const { data } = await context.get(`/user/${userId}/artists`);
+const GET_USER_ARTISTS = async ({ userId, limit }, context) => {
+  const limitParam = limit ? `?limit=${limit}` : '';
+  const { data } = await context.get(`/user/${userId}/artists${limitParam}`);
 
   return Array.isArray(data)
     ? data.map(artist => artistReducer(artist))

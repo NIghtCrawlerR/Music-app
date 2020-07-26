@@ -8,6 +8,7 @@ export const Layout = styled.div`
 export const ContentWrap = styled.div`
   width: 100%;
   margin-left: 200px;
+  margin-bottom: 70px;
   padding: 0 30px;
 `;
 

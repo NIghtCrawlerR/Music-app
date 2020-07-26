@@ -2,7 +2,7 @@ const { gql } = require('apollo-server-express');
 
 const ArtistType = gql`
   extend type Query {
-    artists(userId: String!): [Artist]!
+    artists(userId: String!, limit: Int): [Artist]!
     artist(artistId: String!): Artist!
     artistTopTracks(artistId: String!): [Track]!
     artistAlbums(artistId: String!): [Album]!

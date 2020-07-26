@@ -9,8 +9,9 @@ const playlistReducer = (playlist) => {
   }
 }
 
-const GET_USERS_PLAYLIST = async ({ userId }, context) => {
-  const { data } = await context.get(`/user/${userId}/playlists`);
+const GET_USERS_PLAYLIST = async ({ userId, limit }, context) => {
+  const limitParam = limit ? `?limit=${limit}` : '';
+  const { data } = await context.get(`/user/${userId}/playlists${limitParam}`);
 
   return Array.isArray(data)
     ? data.map(playlist => playlistReducer(playlist))
