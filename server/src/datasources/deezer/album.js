@@ -12,7 +12,6 @@ const GET_USER_ALBUMS = async ({ userId, limit }, context) => {
 const GET_ALBUM = async ({ albumId }, context) => {
   const response = await context.get(`/album/${albumId}`);
 
-  console.log(response);
   return response ? albumReducer(response) : {};
 }
 

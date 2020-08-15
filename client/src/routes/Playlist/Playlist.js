@@ -13,9 +13,10 @@ const Playlist = ({ match: { params: { playlistId } } }) => {
     },
   });
 
-  const tracks = get(playlistTracksQuery, 'data.playlistTracks', []);
+  const { data, loading } = playlistTracksQuery;
+  const tracks = get(data, 'playlistTracks', []);
 
-  return (<TrackList tracks={tracks} />);
+  return (<TrackList tracks={tracks} loading={loading} />);
 };
 
 Playlist.propTypes = {

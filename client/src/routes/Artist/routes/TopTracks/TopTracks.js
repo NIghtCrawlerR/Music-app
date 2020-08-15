@@ -13,10 +13,11 @@ const TopTracks = ({ match: { params: { artistId } } }) => {
     },
   });
 
-  const tracks = get(tracksQuery, 'data.artistTopTracks', []);
+  const { data, loading } = tracksQuery;
+  const tracks = get(data, 'artistTopTracks', []);
 
   return (
-    <TrackList tracks={tracks} />
+    <TrackList tracks={tracks} loading={loading} />
   );
 };
 

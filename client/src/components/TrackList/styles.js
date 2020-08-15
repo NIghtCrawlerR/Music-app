@@ -18,6 +18,6 @@ export const TableRow = styled.tr`
   }
 `;
 
-export const TableCell = styled.td`
+export const TableCell = styled.td.attrs((props) => ({ colspan: props.colspan }))`
   padding: 15px 10px;
 `;

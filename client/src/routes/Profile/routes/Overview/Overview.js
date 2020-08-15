@@ -26,28 +26,43 @@ const Overview = ({ match: { params: { userId } } }) => {
     variables: { userId, limit: ITEMS_LIMIT },
   });
 
-  const allPlaylists = get(playlistsQuery, 'data.playlists', []);
+  const {
+    data: playlistData,
+    loading: playlistLoading,
+  } = playlistsQuery;
+
+  const {
+    data: artistData,
+    loading: artistLoading,
+  } = artistsQuery;
+
+  const {
+    data: albumsData,
+    loading: albumsLoading,
+  } = albumsQuery;
+
+  const allPlaylists = get(playlistData, 'playlists', []);
   const playlists = allPlaylists.filter(({ isLovedTrack }) => !isLovedTrack);
 
-  const artists = get(artistsQuery, 'data.artists', []);
+  const artists = get(artistData, 'artists', []);
 
-  const albums = get(albumsQuery, 'data.albums', []);
+  const albums = get(albumsData, 'albums', []);
 
   return (
     <div>
-      <Slider items={playlists} component={Playlist} propName="playlist">
+      <Slider items={playlists} component={Playlist} loading={playlistLoading} propName="playlist">
         <Link to={`/profile/${userId}/playlists`}>
           <Heading2>Playlists</Heading2>
         </Link>
       </Slider>
 
-      <Slider items={albums} component={AlbumItem} propName="album">
+      <Slider items={albums} component={AlbumItem} loading={artistLoading} propName="album">
         <Link to={`/profile/${userId}/albums`}>
           <Heading2>Albums</Heading2>
         </Link>
       </Slider>
 
-      <Slider items={artists} component={ArtistItem} propName="artist">
+      <Slider items={artists} component={ArtistItem} loading={albumsLoading} propName="artist">
         <Link to={`/profile/${userId}/artists`}>
           <Heading2>Artists</Heading2>
         </Link>

@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import Preloader from 'components/Preloader';
 import {
   Table, TableHead, TableBody, TableRow, TableCell,
 } from './styles';
 
-const TrackList = ({ tracks, showArtist, showAlbum }) => (
+const TrackList = ({ tracks, showArtist, showAlbum, loading }) => (
   <Table>
     <TableHead>
       <TableRow>
@@ -17,6 +18,13 @@ const TrackList = ({ tracks, showArtist, showAlbum }) => (
       </TableRow>
     </TableHead>
     <TableBody>
+      {loading && (
+        <TableRow>
+          <TableCell colSpan="4">
+            <Preloader />
+          </TableCell>
+        </TableRow>
+      )}
       {tracks.map((track, i) => (
         <TableRow key={track.id}>
           <TableCell>{i + 1}</TableCell>
@@ -44,11 +52,13 @@ TrackList.propTypes = {
   })).isRequired,
   showArtist: PropTypes.bool,
   showAlbum: PropTypes.bool,
+  loading: PropTypes.bool,
 };
 
 TrackList.defaultProps = {
   showAlbum: true,
   showArtist: true,
+  loading: false,
 };
 
 export default TrackList;

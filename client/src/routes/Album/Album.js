@@ -20,15 +20,17 @@ const Album = ({ match: { params: { albumId } } }) => {
     },
   });
 
+  const { data: tracksData, loading } = albumTracksQuery;
+
   const album = get(albumQuery, 'data.album', {});
-  const tracks = get(albumTracksQuery, 'data.albumTracks', []);
+  const tracks = get(tracksData, 'albumTracks', []);
 
   return (
     <>
       <h3>{album.title}</h3>
       <img src={album.coverMedium} alt="" />
 
-      <TrackList tracks={tracks} showArtist={false} showAlbum={false} />
+      <TrackList tracks={tracks} showArtist={false} showAlbum={false} loading={loading} />
     </>
   );
 };

@@ -14,13 +14,14 @@ const LovedTracks = ({ match: { params: { userId } } }) => {
     },
   });
 
-  const lovedTracks = get(lovedTracksQuery, 'data.loved.data', []);
+  const { data, loading } = lovedTracksQuery;
+  const lovedTracks = get(data, 'loved.data', []);
   const count = get(lovedTracksQuery, 'data.loved.count', []);
 
   return (
     <>
       <Heading1>{`${count} tracks`}</Heading1>
-      <TrackList tracks={lovedTracks} />
+      <TrackList tracks={lovedTracks} loading={loading} />
     </>
   );
 };

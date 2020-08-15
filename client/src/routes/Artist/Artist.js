@@ -31,10 +31,9 @@ const Artist = ({ match: { params: { artistId } } }) => {
       <InlineNavigation navigation={navigationItems({ path: `/artist/${artistId}` })} />
 
       <Switch>
-        <Route path="/artist/:artistId" exact />
         <Route path="/artist/:artistId/top_tracks" component={TopTracks} exact />
         <Route path="/artist/:artistId/albums" component={Albums} exact />
-        <Redirect to="/artist/:artistId" />
+        <Redirect to="/artist/:artistId/top_tracks" />
       </Switch>
     </>
   );

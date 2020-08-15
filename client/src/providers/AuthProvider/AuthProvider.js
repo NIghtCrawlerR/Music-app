@@ -66,7 +66,7 @@ const AuthProvider = ({ children, location, history }) => {
       //   clearInterval(checkConnect);
       //   authWindow.close();
       // }, 100);
-      // window.location.href = AUTH_URL;
+      window.location.href = AUTH_URL;
     }
 
     if (hash) {

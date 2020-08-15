@@ -5,6 +5,8 @@ import {
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import PropTypes from 'prop-types';
 
+import Preloader from 'components/Preloader';
+
 import {
   CarouselProvider,
   Slide,
@@ -16,7 +18,7 @@ import {
 
 const SLIDE_SIZE = 264;
 
-const Slider = ({ items, component, propName, children }) => {
+const Slider = ({ items, component, propName, children, loading }) => {
   const container = document.querySelector('.MainContainer');
   const containerWidth = container && container.offsetWidth;
 
@@ -43,6 +45,7 @@ const Slider = ({ items, component, propName, children }) => {
           <ButtonNext />
         </ButtonsWrap>
       </CarouselHeader>
+      {loading && <Preloader />}
       <ReactSlider>
         {renderSlides()}
       </ReactSlider>
@@ -55,6 +58,7 @@ Slider.propTypes = {
   propName: PropTypes.string.isRequired,
   items: PropTypes.array.isRequired,
   component: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default Slider;
