@@ -40,8 +40,13 @@ export const Button = css`
   outline: none;
   transition: all .2s;
 
-  &:hover {
-    border-color: #222;
+  &:disabled {
+    border-color: #ccc;
+    cursor: default;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: #007eff;
   }
 `;
 

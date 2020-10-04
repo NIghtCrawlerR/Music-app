@@ -1,5 +1,6 @@
 import React from 'react';
 
+import useStorage from 'hooks/useStorage';
 import NAVIGATION from './config';
 import {
   SidebarWrap,
@@ -30,10 +31,14 @@ const renderList = (links) => links.map(({ url, title, children }) => (
   </List>
 ));
 
-const Sidebar = () => (
-  <SidebarWrap className="Sidebar">
-    {renderList(NAVIGATION)}
-  </SidebarWrap>
-);
+const Sidebar = () => {
+  const [{ userId }] = useStorage(['userId']);
+
+  return (
+    <SidebarWrap className="Sidebar">
+      {renderList(NAVIGATION(userId))}
+    </SidebarWrap>
+  );
+};
 
 export default Sidebar;

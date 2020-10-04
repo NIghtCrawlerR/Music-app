@@ -1,17 +1,15 @@
-import { USER_ID } from 'config';
-
-const NAVIGATION = [{
+const NAVIGATION = (userId) => ([{
   title: 'Home',
   url: '/home',
 }, {
   title: 'Profile',
-  url: `/profile/${USER_ID}`,
+  url: `/profile/${userId}`,
   children: [
-    { title: 'Loved tracks', url: `/profile/${USER_ID}/loved` },
-    { title: 'Playlists', url: `/profile/${USER_ID}/playlists` },
-    { title: 'Albums', url: `/profile/${USER_ID}/albums` },
-    { title: 'Artists', url: `/profile/${USER_ID}/artists` },
+    { title: 'Loved tracks', url: `/profile/${userId}/loved` },
+    { title: 'Playlists', url: `/profile/${userId}/playlists` },
+    { title: 'Albums', url: `/profile/${userId}/albums` },
+    { title: 'Artists', url: `/profile/${userId}/artists` },
   ],
-}];
+}]);
 
 export default NAVIGATION;

@@ -2,16 +2,17 @@ import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import get from 'lodash/get';
 
-import { USER_ID } from 'config';
+import PropTypes from 'utils/propTypes';
 import PlayList from 'components/PlayList';
 import { Heading1 } from 'styledComponents';
 import QUERY from './graphql/PlaylistsQuery';
 
-const Playlists = () => {
+const Playlists = ({ match: { params: { userId } } }) => {
   const playlistsQuery = useQuery(QUERY, {
     variables: {
-      userId: USER_ID,
+      userId,
     },
+    skip: !userId,
   });
 
   const allPlaylists = get(playlistsQuery, 'data.playlists', []);
@@ -23,6 +24,10 @@ const Playlists = () => {
       <PlayList playlists={playlists} />
     </>
   );
+};
+
+Playlists.propTypes = {
+  match: PropTypes.match.isRequired,
 };
 
 export default Playlists;
